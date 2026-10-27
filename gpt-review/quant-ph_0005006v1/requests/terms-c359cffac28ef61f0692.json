@@ -1,0 +1,133 @@
+{
+  "schema_version": 1,
+  "paper_id": "quant-ph/0005006v1",
+  "reviewer": "GPT",
+  "instructions": "Review terminology occurrence by occurrence using the supplied short verbatim excerpts. These source_context and target_context fields are excerpts, not full paragraphs; do not infer omitted claims. source_sha256 and target_sha256 bind the unchanged full local blocks. candidate_sha256 binds the unchanged full private candidate/context snapshot for result import, not the shortened public view. Copy paper_id, packet_id, candidate_id and candidate_sha256 into the response. Return approve/correct/defer with rationale; correct requires suggestions keyed by every occurrence block_id. If the excerpts are insufficient, return defer and explain the missing context. Do not rewrite paper text.",
+  "candidates": [
+    {
+      "id": "term-57ae80e01740148c3baa",
+      "en": "uncopying",
+      "sense": "pb-definition",
+      "ja": "複製の取り消し",
+      "alternatives": [
+        "複製解除"
+      ],
+      "reasons": [
+        "通常の不可逆な情報消去と区別し、PBの定義を指す訳語を論文全体で確認するため"
+      ],
+      "severity": "minor",
+      "occurrences": [
+        {
+          "block_id": "sec00-p005",
+          "ja": "複製の取り消し",
+          "source_context": "`uncopying', which is the opposite of copying",
+          "target_context": "複製の逆に当たる「複製の取り消し」の操作",
+          "source_location": {
+            "file": "main.tex",
+            "line": 44,
+            "offset": 1927,
+            "expanded_offset": 1927,
+            "length": 0
+          },
+          "source_sha256": "3fef2d73fe3b85f47a10cc76fb659eb3ac9402dc456b73362b118ddfd1687641",
+          "target_sha256": "5d55c205f2c8bf01d4afe04204be8ddf8f08f110e377a15e459ea11cf8552886"
+        },
+        {
+          "block_id": "sec00-p006",
+          "ja": "複製の取り消し",
+          "source_context": "uncopying machine",
+          "target_context": "複製を取り消す装置",
+          "source_location": {
+            "file": "main.tex",
+            "line": 64,
+            "offset": 3361,
+            "expanded_offset": 3361,
+            "length": 0
+          },
+          "source_sha256": "0fe2369a995ead67e4359a82ef0a229cae7c34383972e65de0ba88d5a0148773",
+          "target_sha256": "246eda68771729ecd41718a9dcae804ecac44a767db63dcfb19749fa71f1e318"
+        },
+        {
+          "block_id": "sec00-p007",
+          "ja": "複製の取り消し",
+          "source_context": "narrow act of uncopying",
+          "target_context": "複製の取り消しという限定された操作",
+          "source_location": {
+            "file": "main.tex",
+            "line": 106,
+            "offset": 6508,
+            "expanded_offset": 6508,
+            "length": 0
+          },
+          "source_sha256": "6d3a06954f242765769bf09c167592ba66fd7f8ef860331b3f99a868daa7638d",
+          "target_sha256": "86488b0da76f0f670542745f4519d000e0adc34ff82982ce6522a6f9444eb7e0"
+        },
+        {
+          "block_id": "sec00-p008",
+          "ja": "複製の取り消し",
+          "source_context": "uncopying as defined by PB",
+          "target_context": "PBが定義した複製の取り消し",
+          "source_location": {
+            "file": "main.tex",
+            "line": 126,
+            "offset": 7956,
+            "expanded_offset": 7956,
+            "length": 0
+          },
+          "source_sha256": "76c3bb1c25a63e54ed4faee97d4cd029fbf9409ccee60c98819d1fa070494de5",
+          "target_sha256": "697c462ceba28c10ec18610c7df9dc3dd84942a7ed351a6a1420825184310e41"
+        },
+        {
+          "block_id": "sec00-p009",
+          "ja": "複製取り消し",
+          "source_context": "an uncopying  machine",
+          "target_context": "複製取り消し装置",
+          "source_location": {
+            "file": "main.tex",
+            "line": 174,
+            "offset": 11443,
+            "expanded_offset": 11443,
+            "length": 0
+          },
+          "source_sha256": "144f24b2a64435ce6a389188882b67a92ecd86215ef907a48560f2979a5ef4d1",
+          "target_sha256": "0b7665aa0b22d06972f61bbd32b8fbd4175501fb5d07d47e02d8767c5e99f958"
+        }
+      ],
+      "status": "pending",
+      "candidate_sha256": "3b9e9af902b40ae0a54c83a316fc2ec3f81cf83d5dfe3f50bef0fe129efeeddc"
+    },
+    {
+      "id": "term-ae2c70f8df700cdc500e",
+      "en": "ancilla",
+      "sense": "auxiliary-subsystem",
+      "ja": "補助系",
+      "alternatives": [
+        "補助システム"
+      ],
+      "reasons": [
+        "量子状態そのものと、その状態を持つ補助的な部分系を区別して読むため"
+      ],
+      "severity": "minor",
+      "occurrences": [
+        {
+          "block_id": "sec00-p006",
+          "ja": "補助系",
+          "source_context": "an ancilla",
+          "target_context": "補助系",
+          "source_location": {
+            "file": "main.tex",
+            "line": 64,
+            "offset": 3361,
+            "expanded_offset": 3361,
+            "length": 0
+          },
+          "source_sha256": "0fe2369a995ead67e4359a82ef0a229cae7c34383972e65de0ba88d5a0148773",
+          "target_sha256": "246eda68771729ecd41718a9dcae804ecac44a767db63dcfb19749fa71f1e318"
+        }
+      ],
+      "status": "pending",
+      "candidate_sha256": "bcdc5c0ec0ef41899aba2bea9844bac8e571e8d957d69e3e84b5d2dd890a6a6a"
+    }
+  ],
+  "packet_id": "terms-c359cffac28ef61f0692"
+}
