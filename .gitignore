@@ -1,0 +1,13 @@
+# Local application/debug output
+debug.log
+*.log
+
+# Python and disposable working data
+**/.venv/
+**/__pycache__/
+**/.pytest_cache/
+**/*.egg-info/
+**/.test-tmp*/
+**/pytest-cache-files*/
+/paper-translator/workspace/
+/paper-translator/reports/history/

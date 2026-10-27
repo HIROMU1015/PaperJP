@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "paper-translator"
+version = "0.1.0"
+description = "Provenance-preserving academic paper translation with Codex and Claude Code"
+requires-python = ">=3.11"
+dependencies = ["requests>=2.32,<3", "pylatexenc==2.10", "beautifulsoup4>=4.12,<5", "PyMuPDF>=1.24,<2", "Pillow>=10,<13", "jsonschema>=4.22,<5"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<10", "PyYAML>=6,<7"]
+pdf = ["docling>=2,<3"]
+
+[project.scripts]
+paper-translator = "paper_translator.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["paper_translator*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

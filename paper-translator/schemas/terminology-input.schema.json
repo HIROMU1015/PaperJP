@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "terminology-input",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "paper_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "candidates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "en": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sense": {
+            "type": "string",
+            "minLength": 1
+          },
+          "ja": {
+            "type": "string",
+            "minLength": 1
+          },
+          "alternatives": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1
+          },
+          "severity": {
+            "enum": [
+              "minor",
+              "major",
+              "critical"
+            ]
+          },
+          "block_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_-]+$"
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          }
+        },
+        "required": [
+          "en",
+          "sense",
+          "ja",
+          "alternatives",
+          "reason",
+          "severity",
+          "block_ids"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0
+    }
+  },
+  "required": [
+    "schema_version",
+    "paper_id",
+    "candidates"
+  ],
+  "additionalProperties": false
+}

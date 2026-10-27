@@ -1,0 +1,236 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "terminology-candidates",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "paper_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "candidates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]+$"
+          },
+          "en": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sense": {
+            "type": "string",
+            "minLength": 1
+          },
+          "ja": {
+            "type": "string",
+            "minLength": 1
+          },
+          "alternatives": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "reasons": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1
+          },
+          "severity": {
+            "enum": [
+              "minor",
+              "major",
+              "critical"
+            ]
+          },
+          "status": {
+            "enum": [
+              "pending",
+              "approved",
+              "revision_requested",
+              "deferred",
+              "stale"
+            ]
+          },
+          "occurrences": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "block_id": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9_-]+$"
+                },
+                "ja": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "source_context": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "target_context": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "source_location": {
+                  "type": "object"
+                },
+                "source_sha256": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$"
+                },
+                "target_sha256": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$"
+                }
+              },
+              "required": [
+                "block_id",
+                "ja",
+                "source_context",
+                "target_context",
+                "source_location",
+                "source_sha256",
+                "target_sha256"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 1
+          },
+          "review": {
+            "anyOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "candidate_id": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9_-]+$"
+                  },
+                  "candidate_sha256": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$"
+                  },
+                  "decision": {
+                    "enum": [
+                      "approve",
+                      "correct",
+                      "defer"
+                    ]
+                  },
+                  "rationale": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "suggestions": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "packet_id": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9_-]+$"
+                  },
+                  "reviewer": {
+                    "const": "GPT"
+                  },
+                  "accepted_sha256": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$"
+                  },
+                  "applied": {
+                    "type": "boolean"
+                  },
+                  "reviewed_at": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "application": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "block_id": {
+                          "type": "string",
+                          "pattern": "^[A-Za-z0-9_-]+$"
+                        },
+                        "rationale": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "source_sha256": {
+                          "type": "string",
+                          "pattern": "^[0-9a-f]{64}$"
+                        },
+                        "target_sha256": {
+                          "type": "string",
+                          "pattern": "^[0-9a-f]{64}$"
+                        }
+                      },
+                      "required": [
+                        "block_id",
+                        "rationale",
+                        "source_sha256",
+                        "target_sha256"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "minItems": 0
+                  }
+                },
+                "required": [
+                  "candidate_id",
+                  "candidate_sha256",
+                  "decision",
+                  "rationale",
+                  "packet_id",
+                  "reviewer",
+                  "accepted_sha256",
+                  "applied",
+                  "reviewed_at"
+                ],
+                "additionalProperties": false
+              }
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "en",
+          "sense",
+          "ja",
+          "alternatives",
+          "reasons",
+          "severity",
+          "status",
+          "occurrences",
+          "review"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0
+    }
+  },
+  "required": [
+    "schema_version",
+    "paper_id",
+    "candidates"
+  ],
+  "additionalProperties": false
+}

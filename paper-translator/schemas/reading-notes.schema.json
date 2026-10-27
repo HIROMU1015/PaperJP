@@ -1,0 +1,129 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "reading-notes",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "paper_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "notes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "block_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]+$"
+          },
+          "kind": {
+            "enum": [
+              "logic",
+              "assumption",
+              "derivation",
+              "notation",
+              "relation",
+              "question",
+              "explanation"
+            ]
+          },
+          "claim_type": {
+            "enum": [
+              "explicit",
+              "derived",
+              "speculative"
+            ]
+          },
+          "content": {
+            "type": "string",
+            "minLength": 1
+          },
+          "certainty": {
+            "enum": [
+              "high",
+              "medium",
+              "low"
+            ]
+          },
+          "agent": {
+            "enum": [
+              "Codex",
+              "Claude Code"
+            ]
+          },
+          "source_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "target_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "block_id": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9_-]+$"
+                },
+                "quote": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "source_sha256": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$"
+                },
+                "source_location": {
+                  "type": "object"
+                }
+              },
+              "required": [
+                "block_id",
+                "quote",
+                "source_sha256",
+                "source_location"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 1
+          },
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]+$"
+          },
+          "created_at": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "block_id",
+          "kind",
+          "claim_type",
+          "content",
+          "certainty",
+          "agent",
+          "source_sha256",
+          "target_sha256",
+          "evidence",
+          "id",
+          "created_at"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0
+    }
+  },
+  "required": [
+    "schema_version",
+    "paper_id",
+    "notes"
+  ],
+  "additionalProperties": false
+}

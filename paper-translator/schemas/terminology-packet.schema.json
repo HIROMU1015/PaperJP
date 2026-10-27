@@ -1,0 +1,175 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "terminology-packet",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "paper_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "reviewer": {
+      "const": "GPT"
+    },
+    "instructions": {
+      "type": "string",
+      "minLength": 1
+    },
+    "packet_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_-]+$"
+    },
+    "candidates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]+$"
+          },
+          "en": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sense": {
+            "type": "string",
+            "minLength": 1
+          },
+          "ja": {
+            "type": "string",
+            "minLength": 1
+          },
+          "alternatives": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "reasons": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1
+          },
+          "severity": {
+            "enum": [
+              "minor",
+              "major",
+              "critical"
+            ]
+          },
+          "occurrences": {
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "block_id": {
+                      "type": "string",
+                      "pattern": "^[A-Za-z0-9_-]+$"
+                    },
+                    "ja": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "source_context": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "target_context": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "source_location": {
+                      "type": "object"
+                    },
+                    "source_sha256": {
+                      "type": "string",
+                      "pattern": "^[0-9a-f]{64}$"
+                    },
+                    "target_sha256": {
+                      "type": "string",
+                      "pattern": "^[0-9a-f]{64}$"
+                    }
+                  },
+                  "required": [
+                    "block_id",
+                    "ja",
+                    "source_context",
+                    "target_context",
+                    "source_location",
+                    "source_sha256",
+                    "target_sha256"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "block_id": {
+                      "type": "string",
+                      "pattern": "^[A-Za-z0-9_-]+$"
+                    },
+                    "missing": {
+                      "const": true
+                    }
+                  },
+                  "required": [
+                    "block_id",
+                    "missing"
+                  ],
+                  "additionalProperties": false
+                }
+              ]
+            },
+            "minItems": 1
+          },
+          "status": {
+            "enum": [
+              "pending",
+              "approved",
+              "revision_requested",
+              "deferred",
+              "stale"
+            ]
+          },
+          "candidate_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        },
+        "required": [
+          "id",
+          "en",
+          "sense",
+          "ja",
+          "alternatives",
+          "reasons",
+          "severity",
+          "occurrences",
+          "status",
+          "candidate_sha256"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0
+    }
+  },
+  "required": [
+    "schema_version",
+    "paper_id",
+    "reviewer",
+    "instructions",
+    "packet_id",
+    "candidates"
+  ],
+  "additionalProperties": false
+}

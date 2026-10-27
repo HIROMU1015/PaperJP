@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "reading-edition",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "paper_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "draft": {
+      "type": "boolean"
+    },
+    "faithful_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "notes_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "output_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "block_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Za-z0-9_-]+$"
+      },
+      "minItems": 0,
+      "uniqueItems": true
+    }
+  },
+  "required": [
+    "schema_version",
+    "paper_id",
+    "draft",
+    "faithful_sha256",
+    "notes_sha256",
+    "output_sha256",
+    "block_ids"
+  ],
+  "additionalProperties": false
+}

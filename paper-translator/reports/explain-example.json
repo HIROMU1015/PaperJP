@@ -1,0 +1,471 @@
+{
+  "schema_version": 1,
+  "paper_id": "quant-ph/0005006v1",
+  "requested_id": "sec00-p005",
+  "block_id": "sec00-p005",
+  "target": {
+    "block_id": "sec00-p005",
+    "kind": "paragraph",
+    "section": 0,
+    "en": "The   March   issue   of  Nature  contains  a  letter  entitled  `Impossibility of deleting an unknown quantum state' by A.  K.  Pati  and S.  Braunstein  [1] (hereafter referred as PB for short). The letter begins with a reference to an earlier letter by W. K. Wootters and W. H.  Zurek [2],  according  to  which  an  unknown  quantum  state  cannot be cloned or duplicated. (An unknown  quantum  state  is  a  linear  superposition,  with unknown  coefficients, of the preferred states of a system. For example, the up and down states, with respect to a specified direction, are the preferred states  of  a  spin-1/2  particle.)  Then,  the  authors  talk   about desirability  of  having  an  option  to  delete  information  in  a quantum computer. They discard the usual method of irreversibly erasing  information as  of  no  interest,  and  that  they  are  concerned  only with the act of `uncopying', which is the opposite of copying. Uncopying needs at least  two copies  of  a  state; the quantum-deleting machine performing uncopying will operate on two identical input states - the original and a copy - and induce the copy to switch to some prescribed state. The  reason  for  insisting  on uncopying,  rather  than  the  usual  erasing,  is very vague in the letter, except for a reference to Landauer, who had pointed  out  that  irreversible erasure of information leads to increase of entropy.",
+    "ja": "Nature誌の三月号には、A. K. PatiとS. Braunsteinによる「未知の量子状態を削除することの不可能性」と題するレター[1]が掲載されている（以下、両者を略してPBと呼ぶ）。そのレターは、未知の量子状態はクローン化も複製もできないとするW. K. WoottersとW. H. Zurekの先行するレター[2]への言及から始まる。（未知の量子状態とは、系の優先状態を未知の係数で線形に重ね合わせたものである。例えば、指定した方向に対する上向き状態と下向き状態は、スピン1/2粒子の優先状態である。）続いて著者らは、量子コンピュータに情報を削除する選択肢があることの望ましさについて述べている。彼らは、情報を不可逆に消去する通常の方法には関心がないとして退け、複製の逆に当たる「複製の取り消し」の操作だけを問題にしている。複製の取り消しには、同じ状態が少なくとも二つ必要である。複製の取り消しを行う量子削除装置は、元の状態とそのコピーという二つの同一の入力状態に作用し、コピーを何らかの所定の状態に移行させる。通常の消去ではなく複製の取り消しに固執する理由は、そのレターでは極めて曖昧である。ただし、情報の不可逆な消去はエントロピーの増大をもたらすと指摘したLandauerへの言及はある。",
+    "source_location": {
+      "file": "main.tex",
+      "line": 44,
+      "offset": 1927,
+      "expanded_offset": 1927,
+      "length": 0
+    },
+    "source_sha256": "3fef2d73fe3b85f47a10cc76fb659eb3ac9402dc456b73362b118ddfd1687641",
+    "target_sha256": "5d55c205f2c8bf01d4afe04204be8ddf8f08f110e377a15e459ea11cf8552886",
+    "inline_math": [],
+    "asset": null
+  },
+  "before": [
+    {
+      "block_id": "sec00-p004",
+      "kind": "paragraph",
+      "section": 0,
+      "en": "An  intriguing  report appeared in The Times of India (13 March 2000), entitled `Indian scientist discovers key to  tamper-proof  computers'. It  caught  the  attention of many people, particularly physicists including the present authors. `A new law, by Arun Kumar Pati from Bhabha  Atomic Research  Centre,  currently  working  at  University  of  Wales, and Samuel Braunstein from School of Informatics at Wales, says  that  unknown  quantum states cannot be destroyed, thereby paving the way for development of tamper proof  computers',  said  the  report.  It further added, `The new law called `quantum no-deleting' was  published  in  the  latest  issue  of  the international  journal Nature. The quantum no- deleting law means that unlike in conventional computers, in which  anyone  can  delete  a  copy  of information,  in quantum computers it will not be possible to delete quantum information'. Announcement of such a result is striking, and  is  certainly of  great  interest  to  everyone  confronted  with the problem of safety of information in computers.",
+      "ja": "The Times of India紙（2000年3月13日）に、「インドの科学者、改ざん防止コンピュータの鍵を発見」と題する興味深い記事が掲載された。この記事は多くの人々、とりわけ本稿の著者らを含む物理学者の関心を引いた。記事は、「バーバ原子力研究センターに所属し、現在はウェールズ大学で研究しているArun Kumar Patiと、ウェールズの情報学部のSamuel Braunsteinによる新しい法則によれば、未知の量子状態は破壊できず、これによって改ざん防止コンピュータの開発への道が開かれる」と報じた。さらに、「『量子削除不可能』と呼ばれるこの新しい法則は、国際学術誌Natureの最新号に掲載された。量子削除不可能の法則は、誰でも情報のコピーを削除できる従来のコンピュータとは異なり、量子コンピュータでは量子情報の削除が不可能になることを意味する」と付け加えていた。このような結果の発表は衝撃的であり、コンピュータ内の情報の安全性という問題に直面するすべての人々にとって、確かに大いに関心を引くものである。",
+      "source_location": {
+        "file": "main.tex",
+        "line": 28,
+        "offset": 822,
+        "expanded_offset": 822,
+        "length": 0
+      },
+      "source_sha256": "8742baaeddb361f4071877df5f717067fd41746d9e6a386b8d4d35c08c3ea8c2",
+      "target_sha256": "146d3ca7c91f5c8a85822038fe108520dd91ffd5783a484b8909af924be5e3f1",
+      "inline_math": [],
+      "asset": null
+    }
+  ],
+  "after": [
+    {
+      "block_id": "sec00-p006",
+      "kind": "paragraph",
+      "section": 0,
+      "en": "In the main body of the letter, PB talk about a transformation, which is the quantum  mechanical time evolution of a composite system consisting of three sub-systems. There are two identical sub-systems in identical  states,  each denoted  by  $\\Psi$,  and an ancilla, which represents the remaining part of the composite system, in a prescribed state $A$.  As  defined  by  PB,  this system would perform the function of an uncopying machine, if it starts from a  composite  state,  denoted by $\\Psi \\Psi A$, and ends up in a state $\\Psi \\Sigma A_ \\psi$. Thus, uncopying is to switch the second $\\Psi$ to  $\\Sigma$ ,  which  is  a prescribed state of the second sub-system. The authors agree here that, in this process, the state $A$  of  the  ancilla  is  changed  to $A_{\\Psi}$.  The  explicit  sub-script $\\Psi$ on $A$ is to indicate that the final state of the ancilla depends on the state to be uncopied. The  authors assume  that  such  a transformation exists when $\\Psi$ is $H$ or $V$, which are  the  preferred  polarization  states   -   horizontal   and   vertical, respectively - of a photon. Thus, it is hypothesized that the transformation takes $H H A$ to $H \\Sigma A_H$ and $V V A$ to $V \\Sigma A_V$, where $A_{H}$ and  $A_{V}$  are,  respectively,  the  states  of  the  ancilla  after  the transformations. Then, their question is whether the same transformation can uncopy an arbitrary linear superposition, $\\Psi  =  \\alpha  H  +  \\beta  V$, normalized  to  unity.  After  some elementary steps, they find that this is indeed possible with an appropriate $A_{\\Psi}$. The composite state, $( H  V +  V  H  )  A$,  then  transforms  to $(H \\Sigma A_{V}+V \\Sigma A_{H})$. The required form for $A_{\\Psi}$ is $(\\alpha A_{H}+  \\beta  A_{V})$.  Thus,  the conclusion  should  have  been  that  the sought after transformation on the composite state vector is indeed possible - even  though  it  has  not  been explicitly  constructed.  However,  at  this point PB change their attitude, throwing to winds the very definition of uncopying they  had  adopted.  They take  the  view  that this process is not uncopying as $A_{\\Psi}$ has turned out to be a linear superposition of $A_{H}$ and $A_{V}$! No such caution was advanced in the beginning. Further, if this objection is to  sustain,  then, the  states  $H$  and $V$ also can not be uncopied because, in these cases also, $A$ is changed to $A_{H}$ or $A_{V}$. It seems that the  authors  were looking  for  a  serious  contradiction  against the uncopying process for a superposed state, but could not find one. However, they did not hesitate  to announce  the  birth of a new `quantum-no-deleting principle' in the letter. Many more  claims  are  sprinkled  throughout  the  letter:  e.g.;  (i)  the no-deleting principle is claimed to have been derived for an unknown quantum state   (the  unknown  character  is  never  used  at any  stage  of  their `derivation'), (ii) the no-deleting principle is claimed to be  deduced  for reversible  as  well as irreversible machines ( although  Schrödinger evolution, that is always reversible, is tacitly assumed by PB), etc.",
+      "ja": "レターの本文でPBは、三つの部分系からなる複合系の量子力学的な時間発展に相当する変換について論じている。同一の状態にある二つの同種の部分系があり、それぞれの状態を$\\Psi$と表す。また、複合系の残りの部分を表す補助系が、所定の状態$A$にある。PBの定義によれば、この系が$\\Psi \\Psi A$と表される複合状態から出発して状態$\\Psi \\Sigma A_ \\psi$に至るならば、複製を取り消す装置として機能する。したがって、複製の取り消しとは、二つ目の$\\Psi$を、その部分系の所定の状態である$\\Sigma$に移すことである。著者らも、この過程で補助系の状態$A$が$A_{\\Psi}$へ変化することは認めている。$A$に明示的に付けられた添字$\\Psi$は、補助系の最終状態が、複製を取り消そうとしている状態に依存することを示す。著者らは、$\\Psi$が、光子の優先偏光状態である水平状態$H$または垂直状態$V$の場合に、このような変換が存在すると仮定している。すなわち、$H H A$を$H \\Sigma A_H$へ、$V V A$を$V \\Sigma A_V$へ移す変換を仮定し、$A_{H}$と$A_{V}$は、それぞれの変換後の補助系の状態を表す。そこで彼らは、同じ変換によって、単位ノルムに規格化された任意の線形重ね合わせ$\\Psi  =  \\alpha  H  +  \\beta  V$の複製を取り消せるかどうかを問う。いくつかの初等的な計算の後、適切な$A_{\\Psi}$を選べば、これは確かに可能であることが分かる。そのとき、複合状態$( H  V +  V  H  )  A$は$(H \\Sigma A_{V}+V \\Sigma A_{H})$へ変換される。$A_{\\Psi}$に必要な形は$(\\alpha A_{H}+  \\beta  A_{V})$である。したがって、明示的に構成されてはいなくとも、求める複合状態ベクトルの変換は確かに可能である、という結論になるはずであった。ところがPBはこの時点で態度を変え、自ら採用した複製の取り消しの定義そのものを放棄してしまう。$A_{\\Psi}$が$A_{H}$と$A_{V}$の線形重ね合わせになったことを理由に、この過程は複製の取り消しではないとするのである。当初、そのような留保は一切述べられていなかった。さらに、この反論が成り立つのであれば、状態$H$や$V$の複製も取り消せないことになる。これらの場合にも、$A$は$A_{H}$または$A_{V}$に変化するからである。著者らは、重ね合わせ状態の複製を取り消す過程について重大な矛盾を見いだそうとしたものの、見いだせなかったように思われる。それにもかかわらず、そのレターで新しい「量子削除不可能原理」の誕生を宣言することをためらわなかった。ほかにも、レターの各所には多くの主張が散見される。例えば、(i) 未知の量子状態について削除不可能原理を導いたと主張しているが、その「導出」のどの段階でも未知であるという性質は使われていない。(ii) 可逆な装置だけでなく不可逆な装置についても削除不可能原理を導いたと主張しているが、PBは、常に可逆であるシュレーディンガー発展を暗黙に仮定している、などである。",
+      "source_location": {
+        "file": "main.tex",
+        "line": 64,
+        "offset": 3361,
+        "expanded_offset": 3361,
+        "length": 0
+      },
+      "source_sha256": "0fe2369a995ead67e4359a82ef0a229cae7c34383972e65de0ba88d5a0148773",
+      "target_sha256": "246eda68771729ecd41718a9dcae804ecac44a767db63dcfb19749fa71f1e318",
+      "inline_math": [
+        {
+          "id": "sec00-p006-m0001",
+          "raw_tex": "$\\Psi$",
+          "markdown": "$\\Psi$",
+          "source": {
+            "file": "main.tex",
+            "line": 67,
+            "offset": 3605,
+            "expanded_offset": 3605,
+            "length": 6
+          }
+        },
+        {
+          "id": "sec00-p006-m0002",
+          "raw_tex": "$A$",
+          "markdown": "$A$",
+          "source": {
+            "file": "main.tex",
+            "line": 68,
+            "offset": 3713,
+            "expanded_offset": 3713,
+            "length": 3
+          }
+        },
+        {
+          "id": "sec00-p006-m0003",
+          "raw_tex": "$\\Psi \\Psi A$",
+          "markdown": "$\\Psi \\Psi A$",
+          "source": {
+            "file": "main.tex",
+            "line": 70,
+            "offset": 3856,
+            "expanded_offset": 3856,
+            "length": 13
+          }
+        },
+        {
+          "id": "sec00-p006-m0004",
+          "raw_tex": "$\\Psi\n\\Sigma A_ \\psi$",
+          "markdown": "$\\Psi \\Sigma A_ \\psi$",
+          "source": {
+            "file": "main.tex",
+            "line": 70,
+            "offset": 3894,
+            "expanded_offset": 3894,
+            "length": 21
+          }
+        },
+        {
+          "id": "sec00-p006-m0005",
+          "raw_tex": "$\\Psi$",
+          "markdown": "$\\Psi$",
+          "source": {
+            "file": "main.tex",
+            "line": 71,
+            "offset": 3957,
+            "expanded_offset": 3957,
+            "length": 6
+          }
+        },
+        {
+          "id": "sec00-p006-m0006",
+          "raw_tex": "$\\Sigma$",
+          "markdown": "$\\Sigma$",
+          "source": {
+            "file": "main.tex",
+            "line": 71,
+            "offset": 3968,
+            "expanded_offset": 3968,
+            "length": 8
+          }
+        },
+        {
+          "id": "sec00-p006-m0007",
+          "raw_tex": "$A$",
+          "markdown": "$A$",
+          "source": {
+            "file": "main.tex",
+            "line": 73,
+            "offset": 4092,
+            "expanded_offset": 4092,
+            "length": 3
+          }
+        },
+        {
+          "id": "sec00-p006-m0008",
+          "raw_tex": "$A_{\\Psi}$",
+          "markdown": "$A_{\\Psi}$",
+          "source": {
+            "file": "main.tex",
+            "line": 74,
+            "offset": 4131,
+            "expanded_offset": 4131,
+            "length": 10
+          }
+        },
+        {
+          "id": "sec00-p006-m0009",
+          "raw_tex": "$\\Psi$",
+          "markdown": "$\\Psi$",
+          "source": {
+            "file": "main.tex",
+            "line": 74,
+            "offset": 4170,
+            "expanded_offset": 4170,
+            "length": 6
+          }
+        },
+        {
+          "id": "sec00-p006-m0010",
+          "raw_tex": "$A$",
+          "markdown": "$A$",
+          "source": {
+            "file": "main.tex",
+            "line": 74,
+            "offset": 4180,
+            "expanded_offset": 4180,
+            "length": 3
+          }
+        },
+        {
+          "id": "sec00-p006-m0011",
+          "raw_tex": "$\\Psi$",
+          "markdown": "$\\Psi$",
+          "source": {
+            "file": "main.tex",
+            "line": 76,
+            "offset": 4334,
+            "expanded_offset": 4334,
+            "length": 6
+          }
+        },
+        {
+          "id": "sec00-p006-m0012",
+          "raw_tex": "$H$",
+          "markdown": "$H$",
+          "source": {
+            "file": "main.tex",
+            "line": 76,
+            "offset": 4344,
+            "expanded_offset": 4344,
+            "length": 3
+          }
+        },
+        {
+          "id": "sec00-p006-m0013",
+          "raw_tex": "$V$",
+          "markdown": "$V$",
+          "source": {
+            "file": "main.tex",
+            "line": 76,
+            "offset": 4351,
+            "expanded_offset": 4351,
+            "length": 3
+          }
+        },
+        {
+          "id": "sec00-p006-m0014",
+          "raw_tex": "$H H A$",
+          "markdown": "$H H A$",
+          "source": {
+            "file": "main.tex",
+            "line": 79,
+            "offset": 4522,
+            "expanded_offset": 4522,
+            "length": 7
+          }
+        },
+        {
+          "id": "sec00-p006-m0015",
+          "raw_tex": "$H \\Sigma A_H$",
+          "markdown": "$H \\Sigma A_H$",
+          "source": {
+            "file": "main.tex",
+            "line": 79,
+            "offset": 4533,
+            "expanded_offset": 4533,
+            "length": 14
+          }
+        },
+        {
+          "id": "sec00-p006-m0016",
+          "raw_tex": "$V V A$",
+          "markdown": "$V V A$",
+          "source": {
+            "file": "main.tex",
+            "line": 79,
+            "offset": 4552,
+            "expanded_offset": 4552,
+            "length": 7
+          }
+        },
+        {
+          "id": "sec00-p006-m0017",
+          "raw_tex": "$V \\Sigma A_V$",
+          "markdown": "$V \\Sigma A_V$",
+          "source": {
+            "file": "main.tex",
+            "line": 79,
+            "offset": 4563,
+            "expanded_offset": 4563,
+            "length": 14
+          }
+        },
+        {
+          "id": "sec00-p006-m0018",
+          "raw_tex": "$A_{H}$",
+          "markdown": "$A_{H}$",
+          "source": {
+            "file": "main.tex",
+            "line": 79,
+            "offset": 4585,
+            "expanded_offset": 4585,
+            "length": 7
+          }
+        },
+        {
+          "id": "sec00-p006-m0019",
+          "raw_tex": "$A_{V}$",
+          "markdown": "$A_{V}$",
+          "source": {
+            "file": "main.tex",
+            "line": 80,
+            "offset": 4598,
+            "expanded_offset": 4598,
+            "length": 7
+          }
+        },
+        {
+          "id": "sec00-p006-m0020",
+          "raw_tex": "$\\Psi  =  \\alpha  H  +  \\beta  V$",
+          "markdown": "$\\Psi  =  \\alpha  H  +  \\beta  V$",
+          "source": {
+            "file": "main.tex",
+            "line": 82,
+            "offset": 4789,
+            "expanded_offset": 4789,
+            "length": 33
+          }
+        },
+        {
+          "id": "sec00-p006-m0021",
+          "raw_tex": "$A_{\\Psi}$",
+          "markdown": "$A_{\\Psi}$",
+          "source": {
+            "file": "main.tex",
+            "line": 84,
+            "offset": 4937,
+            "expanded_offset": 4937,
+            "length": 10
+          }
+        },
+        {
+          "id": "sec00-p006-m0022",
+          "raw_tex": "$( H  V\n+  V  H  )  A$",
+          "markdown": "$( H  V +  V  H  )  A$",
+          "source": {
+            "file": "main.tex",
+            "line": 84,
+            "offset": 4970,
+            "expanded_offset": 4970,
+            "length": 22
+          }
+        },
+        {
+          "id": "sec00-p006-m0023",
+          "raw_tex": "$(H \\Sigma A_{V}+V \\Sigma A_{H})$",
+          "markdown": "$(H \\Sigma A_{V}+V \\Sigma A_{H})$",
+          "source": {
+            "file": "main.tex",
+            "line": 85,
+            "offset": 5016,
+            "expanded_offset": 5016,
+            "length": 33
+          }
+        },
+        {
+          "id": "sec00-p006-m0024",
+          "raw_tex": "$A_{\\Psi}$",
+          "markdown": "$A_{\\Psi}$",
+          "source": {
+            "file": "main.tex",
+            "line": 86,
+            "offset": 5073,
+            "expanded_offset": 5073,
+            "length": 10
+          }
+        },
+        {
+          "id": "sec00-p006-m0025",
+          "raw_tex": "$(\\alpha A_{H}+  \\beta  A_{V})$",
+          "markdown": "$(\\alpha A_{H}+  \\beta  A_{V})$",
+          "source": {
+            "file": "main.tex",
+            "line": 86,
+            "offset": 5087,
+            "expanded_offset": 5087,
+            "length": 31
+          }
+        },
+        {
+          "id": "sec00-p006-m0026",
+          "raw_tex": "$A_{\\Psi}$",
+          "markdown": "$A_{\\Psi}$",
+          "source": {
+            "file": "main.tex",
+            "line": 91,
+            "offset": 5495,
+            "expanded_offset": 5495,
+            "length": 10
+          }
+        },
+        {
+          "id": "sec00-p006-m0027",
+          "raw_tex": "$A_{H}$",
+          "markdown": "$A_{H}$",
+          "source": {
+            "file": "main.tex",
+            "line": 92,
+            "offset": 5553,
+            "expanded_offset": 5553,
+            "length": 7
+          }
+        },
+        {
+          "id": "sec00-p006-m0028",
+          "raw_tex": "$A_{V}$",
+          "markdown": "$A_{V}$",
+          "source": {
+            "file": "main.tex",
+            "line": 92,
+            "offset": 5565,
+            "expanded_offset": 5565,
+            "length": 7
+          }
+        },
+        {
+          "id": "sec00-p006-m0029",
+          "raw_tex": "$  H$",
+          "markdown": "$H$",
+          "source": {
+            "file": "main.tex",
+            "line": 94,
+            "offset": 5684,
+            "expanded_offset": 5684,
+            "length": 5
+          }
+        },
+        {
+          "id": "sec00-p006-m0030",
+          "raw_tex": "$V$",
+          "markdown": "$V$",
+          "source": {
+            "file": "main.tex",
+            "line": 94,
+            "offset": 5695,
+            "expanded_offset": 5695,
+            "length": 3
+          }
+        },
+        {
+          "id": "sec00-p006-m0031",
+          "raw_tex": "$A$",
+          "markdown": "$A$",
+          "source": {
+            "file": "main.tex",
+            "line": 95,
+            "offset": 5754,
+            "expanded_offset": 5754,
+            "length": 3
+          }
+        },
+        {
+          "id": "sec00-p006-m0032",
+          "raw_tex": "$A_{H}$",
+          "markdown": "$A_{H}$",
+          "source": {
+            "file": "main.tex",
+            "line": 95,
+            "offset": 5772,
+            "expanded_offset": 5772,
+            "length": 7
+          }
+        },
+        {
+          "id": "sec00-p006-m0033",
+          "raw_tex": "$A_{V}$",
+          "markdown": "$A_{V}$",
+          "source": {
+            "file": "main.tex",
+            "line": 95,
+            "offset": 5783,
+            "expanded_offset": 5783,
+            "length": 7
+          }
+        }
+      ],
+      "asset": null
+    }
+  ],
+  "related": [],
+  "outline": [
+    {
+      "block_id": "sec00-p001",
+      "en": "# A Critique on Quantum-No-Deleting Principle",
+      "ja": "# 量子削除不可能原理への批判"
+    }
+  ],
+  "answer_policy": "Separate explicit source statements, logical derivation (show assumptions/calculation), and AI speculation/questions. Never edit faithful translations to answer a reading question.",
+  "context_sha256": "aad6780503a63aeff29f82dbf3d5957d61d213e01c7a69da779253978463ea63"
+}

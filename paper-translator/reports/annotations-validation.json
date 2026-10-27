@@ -1,0 +1,90 @@
+{
+  "date_jst": "2026-10-27",
+  "tests": {
+    "name": "pytest",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "tests": "68",
+    "time": "11.493",
+    "timestamp": "2026-10-27T11:54:47.625669+09:00",
+    "hostname": "abe"
+  },
+  "phase1_baseline_preserved": true,
+  "official_state": {
+    "source": "available",
+    "extraction": "PASS",
+    "translation": "PASS",
+    "review": {
+      "PASS": 19
+    },
+    "official": "VALID",
+    "terminology": {
+      "blocking_issues": [],
+      "candidates": {
+        "term-57ae80e01740148c3baa": {
+          "en": "uncopying",
+          "sense": "pb-definition",
+          "severity": "minor",
+          "state": "pending",
+          "block_ids": [
+            "sec00-p005",
+            "sec00-p006",
+            "sec00-p007",
+            "sec00-p008",
+            "sec00-p009"
+          ]
+        },
+        "term-ae2c70f8df700cdc500e": {
+          "en": "ancilla",
+          "sense": "auxiliary-subsystem",
+          "severity": "minor",
+          "state": "pending",
+          "block_ids": [
+            "sec00-p006"
+          ]
+        }
+      }
+    }
+  },
+  "annotations": {
+    "schema_version": 1,
+    "checked_at": "2026-10-27T02:57:07.102837+00:00",
+    "status": "PASS",
+    "issues": [],
+    "terminology": {
+      "term-57ae80e01740148c3baa": {
+        "en": "uncopying",
+        "sense": "pb-definition",
+        "severity": "minor",
+        "state": "pending",
+        "block_ids": [
+          "sec00-p005",
+          "sec00-p006",
+          "sec00-p007",
+          "sec00-p008",
+          "sec00-p009"
+        ]
+      },
+      "term-ae2c70f8df700cdc500e": {
+        "en": "ancilla",
+        "sense": "auxiliary-subsystem",
+        "severity": "minor",
+        "state": "pending",
+        "block_ids": [
+          "sec00-p006"
+        ]
+      }
+    },
+    "reading_notes": {
+      "definition-uncopying": "current",
+      "question-construction": "current"
+    },
+    "questions": {},
+    "reading_edition": "current"
+  },
+  "faithful_sha256": "5ea720cebaf373fea0622de89d391e2c5fb86b8c22b7ec6b8906d79b92ffe83f",
+  "reading_sha256": "538c46710220ece3f833dadd7487a291fb55d3c61151d2c1e5832ebae99a4faf",
+  "gpt_live_review": "not_run; human handoff pending",
+  "term_correction_claude_flow": "verified with synthetic protocol responses in integration tests; faithful real-paper translation unchanged"
+}

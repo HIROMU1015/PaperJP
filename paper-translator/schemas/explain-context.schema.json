@@ -1,0 +1,335 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "explain-context",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "paper_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "requested_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_-]+$"
+    },
+    "block_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_-]+$"
+    },
+    "target": {
+      "type": "object",
+      "properties": {
+        "block_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]+$"
+        },
+        "kind": {
+          "type": "string",
+          "minLength": 1
+        },
+        "section": {
+          "type": "integer"
+        },
+        "en": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ja": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_location": {
+          "type": "object"
+        },
+        "source_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "target_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "inline_math": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          },
+          "minItems": 0
+        },
+        "asset": {
+          "type": [
+            "object",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "block_id",
+        "kind",
+        "section",
+        "en",
+        "ja",
+        "source_location",
+        "source_sha256",
+        "target_sha256",
+        "inline_math",
+        "asset"
+      ],
+      "additionalProperties": false
+    },
+    "before": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "block_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]+$"
+          },
+          "kind": {
+            "type": "string",
+            "minLength": 1
+          },
+          "section": {
+            "type": "integer"
+          },
+          "en": {
+            "type": "string",
+            "minLength": 1
+          },
+          "ja": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_location": {
+            "type": "object"
+          },
+          "source_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "target_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "inline_math": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            },
+            "minItems": 0
+          },
+          "asset": {
+            "type": [
+              "object",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "block_id",
+          "kind",
+          "section",
+          "en",
+          "ja",
+          "source_location",
+          "source_sha256",
+          "target_sha256",
+          "inline_math",
+          "asset"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0
+    },
+    "after": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "block_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]+$"
+          },
+          "kind": {
+            "type": "string",
+            "minLength": 1
+          },
+          "section": {
+            "type": "integer"
+          },
+          "en": {
+            "type": "string",
+            "minLength": 1
+          },
+          "ja": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_location": {
+            "type": "object"
+          },
+          "source_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "target_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "inline_math": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            },
+            "minItems": 0
+          },
+          "asset": {
+            "type": [
+              "object",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "block_id",
+          "kind",
+          "section",
+          "en",
+          "ja",
+          "source_location",
+          "source_sha256",
+          "target_sha256",
+          "inline_math",
+          "asset"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0
+    },
+    "related": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "block_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]+$"
+          },
+          "kind": {
+            "type": "string",
+            "minLength": 1
+          },
+          "section": {
+            "type": "integer"
+          },
+          "en": {
+            "type": "string",
+            "minLength": 1
+          },
+          "ja": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_location": {
+            "type": "object"
+          },
+          "source_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "target_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "inline_math": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            },
+            "minItems": 0
+          },
+          "asset": {
+            "type": [
+              "object",
+              "null"
+            ]
+          },
+          "relation": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "block_id",
+          "kind",
+          "section",
+          "en",
+          "ja",
+          "source_location",
+          "source_sha256",
+          "target_sha256",
+          "inline_math",
+          "asset",
+          "relation"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0
+    },
+    "outline": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "block_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]+$"
+          },
+          "en": {
+            "type": "string",
+            "minLength": 1
+          },
+          "ja": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "block_id",
+          "en",
+          "ja"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0
+    },
+    "answer_policy": {
+      "type": "string",
+      "minLength": 1
+    },
+    "question": {
+      "type": "string",
+      "minLength": 1
+    },
+    "context_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  },
+  "required": [
+    "schema_version",
+    "paper_id",
+    "requested_id",
+    "block_id",
+    "target",
+    "before",
+    "after",
+    "related",
+    "outline",
+    "answer_policy",
+    "context_sha256"
+  ],
+  "additionalProperties": false
+}

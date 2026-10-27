@@ -1,0 +1,284 @@
+{
+  "date_jst": "2026-10-27",
+  "tests": {
+    "total": 40,
+    "passed": 40,
+    "cases": [
+      {
+        "name": "test_extract_inventory_and_provenance",
+        "status": "passed"
+      },
+      {
+        "name": "test_end_to_end_and_resume",
+        "status": "passed"
+      },
+      {
+        "name": "test_extraction_rejects_chunk_damage[missing]",
+        "status": "passed"
+      },
+      {
+        "name": "test_extraction_rejects_chunk_damage[duplicate]",
+        "status": "passed"
+      },
+      {
+        "name": "test_extraction_rejects_chunk_damage[order]",
+        "status": "passed"
+      },
+      {
+        "name": "test_extraction_rejects_chunk_damage[equation]",
+        "status": "passed"
+      },
+      {
+        "name": "test_extraction_rejects_chunk_damage[citation]",
+        "status": "passed"
+      },
+      {
+        "name": "test_extraction_rejects_chunk_damage[image]",
+        "status": "passed"
+      },
+      {
+        "name": "test_unresolved_review_blocks_official[NEEDS_REVISION]",
+        "status": "passed"
+      },
+      {
+        "name": "test_unresolved_review_blocks_official[INCONCLUSIVE]",
+        "status": "passed"
+      },
+      {
+        "name": "test_translation_change_invalidates_approval_and_context",
+        "status": "passed"
+      },
+      {
+        "name": "test_glossary_change_invalidates_all_approvals",
+        "status": "passed"
+      },
+      {
+        "name": "test_stale_review_response_is_rejected",
+        "status": "passed"
+      },
+      {
+        "name": "test_placeholder_corruption[missing]",
+        "status": "passed"
+      },
+      {
+        "name": "test_placeholder_corruption[duplicate]",
+        "status": "passed"
+      },
+      {
+        "name": "test_placeholder_corruption[altered]",
+        "status": "passed"
+      },
+      {
+        "name": "test_equation_text_and_inline_newlines_preserved",
+        "status": "passed"
+      },
+      {
+        "name": "test_translation_damage[untranslated]",
+        "status": "passed"
+      },
+      {
+        "name": "test_translation_damage[equation]",
+        "status": "passed"
+      },
+      {
+        "name": "test_translation_damage[numeric]",
+        "status": "passed"
+      },
+      {
+        "name": "test_translation_damage[empty]",
+        "status": "passed"
+      },
+      {
+        "name": "test_translation_damage[id]",
+        "status": "passed"
+      },
+      {
+        "name": "test_arxiv_identifiers[https://arxiv.org/abs/2401.01234v2-expected0]",
+        "status": "passed"
+      },
+      {
+        "name": "test_arxiv_identifiers[https://arxiv.org/pdf/quant-ph/0005006v1.pdf-expected1]",
+        "status": "passed"
+      },
+      {
+        "name": "test_arxiv_identifiers[2401.01234-expected2]",
+        "status": "passed"
+      },
+      {
+        "name": "test_archive_security[../escape.tex-False]",
+        "status": "passed"
+      },
+      {
+        "name": "test_archive_security[C:/escape.tex-False]",
+        "status": "passed"
+      },
+      {
+        "name": "test_archive_security[safe.tex-True]",
+        "status": "passed"
+      },
+      {
+        "name": "test_source_tamper_is_fatal",
+        "status": "passed"
+      },
+      {
+        "name": "test_95_percent_boundary_is_not_sufficient_for_pass[94-True]",
+        "status": "passed"
+      },
+      {
+        "name": "test_95_percent_boundary_is_not_sufficient_for_pass[95-False]",
+        "status": "passed"
+      },
+      {
+        "name": "test_95_percent_boundary_is_not_sufficient_for_pass[96-False]",
+        "status": "passed"
+      },
+      {
+        "name": "test_changed_generated_image_is_detected",
+        "status": "passed"
+      },
+      {
+        "name": "test_source_change_invalidates_approvals",
+        "status": "passed"
+      },
+      {
+        "name": "test_date_localization_preserves_day_month_year",
+        "status": "passed"
+      },
+      {
+        "name": "test_unexpanded_custom_math_is_not_silently_accepted",
+        "status": "passed"
+      },
+      {
+        "name": "test_failed_acquisition_does_not_become_success_on_retry",
+        "status": "passed"
+      },
+      {
+        "name": "test_source_priority_and_version_redirect_rejection",
+        "status": "passed"
+      },
+      {
+        "name": "test_markdown_math_normalizes_only_layout_and_retains_raw",
+        "status": "passed"
+      },
+      {
+        "name": "test_pinned_acquisition_resumes_without_network",
+        "status": "passed"
+      }
+    ]
+  },
+  "workspaces": {
+    "quant-ph_0005006v1": {
+      "source": "available",
+      "extraction": "PASS",
+      "translation": "PASS",
+      "review": {
+        "PASS": 19
+      },
+      "official": "VALID"
+    },
+    "preview-fixture": {
+      "source": "available",
+      "extraction": "PASS",
+      "translation": "PASS",
+      "review": {
+        "PASS": 20
+      },
+      "official": "VALID"
+    }
+  },
+  "source_provenance": {
+    "schema_version": 1,
+    "paper_id": "quant-ph/0005006v1",
+    "input": "quant-ph/0005006v1",
+    "version": "v1",
+    "retrieved_at": "2026-10-27T01:43:39.659381+00:00",
+    "files": [
+      {
+        "path": "source/metadata.html",
+        "url": "https://arxiv.org/abs/quant-ph/0005006v1",
+        "sha256": "66984f81b94a612269a9eb110dd287f9279a407244ccc4340c9cfa39a4fba27f",
+        "bytes": 39208,
+        "retrieved_at": "2026-10-27T01:43:39.659381+00:00"
+      },
+      {
+        "path": "source/original-source.bin",
+        "url": "https://arxiv.org/src/quant-ph/0005006v1",
+        "sha256": "3850ee8c05621655c968148721a8205814fe0dfaadb2034290efba775dcf94e3",
+        "bytes": 5658,
+        "retrieved_at": "2026-10-27T01:43:39.974630+00:00"
+      },
+      {
+        "path": "source/paper.pdf",
+        "url": "https://arxiv.org/pdf/quant-ph/0005006v1",
+        "sha256": "8b5b1c55690558fa36c914167929c9d3135da2a202da69fdc1fa7e400c70b10b",
+        "bytes": 59178,
+        "retrieved_at": "2026-10-27T01:43:40.331432+00:00"
+      },
+      {
+        "path": "source/tex/main.tex",
+        "sha256": "385e4f3ac10f20e6e1cb20de301e45463343a87dce5d406e744c0425fe1a332d",
+        "bytes": 13507,
+        "derived_from": "source/original-source.bin"
+      }
+    ],
+    "attempts": [
+      {
+        "kind": "tex",
+        "url": "https://arxiv.org/src/quant-ph/0005006v1",
+        "status": "success",
+        "content_type": "application/gzip"
+      },
+      {
+        "kind": "pdf",
+        "url": "https://arxiv.org/pdf/quant-ph/0005006v1",
+        "status": "success",
+        "content_type": "application/pdf"
+      }
+    ],
+    "source_kind": "tex",
+    "title": "A Critique on `Quantum No-Deleting Principle'"
+  },
+  "source_extraction": {
+    "schema_version": 1,
+    "checked_at": "2026-10-27T02:19:22.295227+00:00",
+    "status": "PASS",
+    "issues": [],
+    "block_count": 19,
+    "counts": {
+      "title": 1,
+      "metadata": 1,
+      "paragraph": 13,
+      "reference": 4
+    },
+    "ratio_threshold": 0.95,
+    "normalized_character_ratio": 0.9961171510982916,
+    "source_word_coverage": 0.9985315712187959,
+    "inventory": {
+      "headings": 0,
+      "equations": 0,
+      "figures": 0,
+      "tables": 0,
+      "references": 4,
+      "footnotes": 0,
+      "captions": 0,
+      "citations": {},
+      "appendix": false
+    },
+    "source_paragraphs_with_missing_words": [],
+    "pdf_word_coverage": 0.9875912408759124,
+    "pdf_pages": 3
+  },
+  "outputs": {
+    "quant-ph_0005006v1": {
+      "sha256": "5ea720cebaf373fea0622de89d391e2c5fb86b8c22b7ec6b8906d79b92ffe83f"
+    },
+    "preview-fixture": {
+      "sha256": "6b72240c7127041c084b69f126ebe7e2298fcc86adc471d8646b9bcfc1912c8e"
+    }
+  },
+  "limitations": {
+    "phase2_structured_pdf_html": "not_implemented",
+    "parallel_execution": "not_implemented",
+    "html_live_success": "not_tested"
+  }
+}

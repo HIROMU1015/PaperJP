@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "checked_at": "2026-10-27T02:54:41.132237+00:00",
+  "status": "PASS",
+  "issues": [],
+  "terminology": {
+    "term-57ae80e01740148c3baa": {
+      "en": "uncopying",
+      "sense": "pb-definition",
+      "severity": "minor",
+      "state": "pending",
+      "block_ids": [
+        "sec00-p005",
+        "sec00-p006",
+        "sec00-p007",
+        "sec00-p008",
+        "sec00-p009"
+      ]
+    },
+    "term-ae2c70f8df700cdc500e": {
+      "en": "ancilla",
+      "sense": "auxiliary-subsystem",
+      "severity": "minor",
+      "state": "pending",
+      "block_ids": [
+        "sec00-p006"
+      ]
+    }
+  },
+  "reading_notes": {
+    "definition-uncopying": "current",
+    "question-construction": "current"
+  },
+  "questions": {},
+  "reading_edition": "current",
+  "faithful_unchanged": true,
+  "claude_approvals_unchanged": true,
+  "faithful_sha256": "5ea720cebaf373fea0622de89d391e2c5fb86b8c22b7ec6b8906d79b92ffe83f",
+  "reading_output": "C:\\Users\\romuk\\Desktop\\code\\PaperJP\\paper-translator\\workspace\\quant-ph_0005006v1\\paper_ja_reading.md",
+  "pending_terms_packet": "C:\\Users\\romuk\\Desktop\\code\\PaperJP\\paper-translator\\workspace\\quant-ph_0005006v1\\terminology\\terms-79a2e8dd94a0346f0fec.json",
+  "gpt_semantic_review": "not_run: pending candidates are intended for human handoff"
+}
