@@ -18,6 +18,14 @@ Unchanged bibliography/math/metadata/asset blocks should remain unchanged.
 Review the correctness of the translation of the author's claims, without rewriting
 or endorsing the author's scientific conclusions. Do not "correct" the original paper.
 
+A long paper is supplied as multiple bounded packets. Review only this packet's
+requested blocks; its neighbors remain read-only context even if reviewed elsewhere.
+If `previous_review` is present, inspect its findings and rationale against the
+current source/target/context. Explain why earlier NEEDS_REVISION/INCONCLUSIVE
+concerns are resolved before returning PASS, or retain the unresolved decision.
+`base_review_sha256` binds this request to that prior state; do not edit it or
+reuse a result from an older packet. The importer rejects superseded responses.
+
 Return ONLY one JSON object, without code fences or other prose:
 
 ```json

@@ -1,6 +1,7 @@
 # Paper Translator
 
 追加機能: [訳語候補のGPT確認・AI読解メモ・段落IDでの質問](docs/ANNOTATIONS.md)。
+[外部レビュー指摘・モデル指定の対応と検証記録](docs/EXTERNAL_REVIEW.md)。
 閲覧にはpaper_ja_reading.mdを使用すると、段落IDをコピーしてCodexの
 paper-explain Skillへ質問できる。原文に忠実なpaper_ja.mdは別に維持する。
 
@@ -80,7 +81,7 @@ Codexは`translate=true`の`protected_text`を日本語化し、`translate=false
 具体的な契約は[FORMATS.md](docs/FORMATS.md)を参照。
 
 ```json
-{"chunk":"001-sec00.md","blocks":[{"id":"sec00-p001","text":"日本語訳"}]}
+{"paper_id":"パケットからコピー","packet_sha256":"パケットからコピー","chunk":"001-sec00.md","blocks":[{"id":"sec00-p001","text":"日本語訳"}]}
 ```
 
 この例は形だけを示す。実際には対象チャンクの全IDを順序通りに含める。
@@ -102,6 +103,23 @@ Pythonから呼ぶ場合（PATHまたはVS Code拡張内の既存CLIを検出）
 .\.venv\Scripts\python.exe -m paper_translator review-prepare $paperWork
 .\.venv\Scripts\python.exe -m paper_translator review-run $paperWork
 ```
+
+review-runは既定で **Opus 5.5（`claude-opus-5-5`）・推論レベル`xhigh`** を明示指定する。
+このプロジェクトのレビュー呼び出しだけに適用し、グローバルなClaude Code設定は変更しない。
+別の設定を使う場合は`--model sonnet --effort high`などで上書きする。
+各依頼の指定値はworkspace内の`reviews/claude-request-<packet_id>.json`に記録する。
+指定値の記録と実際にサーバーで使われたモデルの検証は別であり、生のClaude応答も従来通り保存する。
+モデルIDと推論レベルは[Claude Code公式仕様](https://code.claude.com/docs/en/model-config)に従う。
+
+review-prepareは`packets`配列を返す。既定では各依頼を40ブロック・JSON 60000文字以内にし、
+隣接段落・用語集・節構成・過去の指摘もその文字数に含める。`--max-blocks 10 --max-chars 30000`
+などで両コマンドの上限を調整できる。単一ブロックと文脈が収まらない場合は停止する。
+文字数はAPIトークン数の保証ではない。review-runは順に処理し、中断後の通常の再実行は
+現時点でPASSでないブロックだけを依頼する。`--all`は承認済みブロックも再レビューする。
+明示的に1件だけ実行する場合は`--packet <path>`を指定する。
+
+レビューの内容ハッシュに加え、依頼作成時の承認状態も照合する。新しい指摘が届いたら
+新たにreview-prepareする。古いPASSを再取り込みしてもNEEDS_REVISION/INCONCLUSIVEを消せない。
 
 CLIの場所を指定する場合は`review-run $paperWork --claude-exe 'C:\path\claude.exe'`。
 この呼び出しは英語原文・日本語訳・用語集・文脈を既存認証でClaudeへ渡す。

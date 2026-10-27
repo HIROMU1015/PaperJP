@@ -1,12 +1,12 @@
 """Codex-authored translation of the original tiny test fixture (not a research paper)."""
 from pathlib import Path
-import re
 import sys
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from paper_translator.common import read_json, save_json
 from paper_translator.split import prepare
 from paper_translator.translate import import_translation
+from scripts.recorded_response import recorded_text
 
 TEXT = {
     "sec00-title001": "# 小さな量子テスト",
@@ -36,11 +36,10 @@ def main():
         packet = read_json(path)
         result = []
         for src in packet["blocks"]:
-            tokens = list(src["placeholders"])
-            text = re.sub(r"@(\d+)@", lambda m: tokens[int(m[1])], TEXT[src["id"]]) if src["translate"] else src["text"]
+            text = recorded_text(src, TEXT[src["id"]]) if src["translate"] else src["text"]
             result.append({"id": src["id"], "text": text})
         response = work / "codex-responses" / path.name
-        save_json(response, {"chunk": packet["chunk"], "blocks": result})
+        save_json(response, {"paper_id": packet["paper_id"], "packet_sha256": packet["packet_sha256"], "chunk": packet["chunk"], "blocks": result})
         print(import_translation(work, response)["status"])
 
 

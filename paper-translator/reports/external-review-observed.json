@@ -1,0 +1,31 @@
+{
+  "baseline_commit": "c840107af5c44dbd2ce8711f2abf909acb3863f1",
+  "ai_responses": "synthetic protocol fixtures",
+  "cases": {
+    "NEEDS_REVISION": {
+      "before_old_pass_reimport": [
+        "NEEDS_REVISION"
+      ],
+      "after_old_pass_reimport": [
+        "PASS"
+      ],
+      "official_after_old_pass": "VALID"
+    },
+    "INCONCLUSIVE": {
+      "before_old_pass_reimport": [
+        "INCONCLUSIVE"
+      ],
+      "after_old_pass_reimport": [
+        "PASS"
+      ],
+      "official_after_old_pass": "VALID"
+    },
+    "stale_glossary": {
+      "import_status": "PASS"
+    },
+    "link_label": {
+      "visible_label_in_protected_text": false,
+      "whole_link_in_mapping": true
+    }
+  }
+}

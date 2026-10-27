@@ -44,7 +44,15 @@ def source_prose(text):
     text = re.sub(r"\\(?:label|ref|eqref|autoref|cref|Cref|cite\w*|includegraphics)\*?\s*(?:\[[^]]*\]\s*)*\{[^}]*\}", " ", text)
     text = re.sub(r"\\begin\{tabular\*?\}\s*\{[^}]*\}|\\end\{tabular\*?\}", " ", text)
     text = text.replace("&", " ")
-    return LatexNodes2Text(math_mode="remove").latex_to_text(text)
+    # The independent plain-text parser does not know hyperref's href arguments
+    # by default. Compare the printed label (including nested groups), not its URL.
+    from pylatexenc.latexwalker import get_default_latex_context_db
+    from pylatexenc.macrospec import MacroSpec, MacroStandardArgsParser
+    from pylatexenc.latex2text import MacroTextSpec, get_default_latex_context_db as text_context_db
+    parser_context, text_context = get_default_latex_context_db(), text_context_db()
+    parser_context.add_context_category("paper-links", macros=[MacroSpec("href", MacroStandardArgsParser(argspec="{{"))], prepend=True)
+    text_context.add_context_category("paper-links", macros=[MacroTextSpec("href", simplify_repl=lambda node, l2tobj: l2tobj.nodelist_to_text([node.nodeargd.argnlist[1]]))], prepend=True)
+    return LatexNodes2Text(math_mode="remove", latex_context=text_context).latex_to_text(text, latex_context=parser_context)
 
 
 def independent_inventory(source):
@@ -84,7 +92,7 @@ def check_links(work, blocks):
     return problems
 
 
-def validate_extraction(work):
+def validate_extraction(work, write_report=True):
     work = Path(work)
     blocks = load_blocks(work)
     problems = source_issues(work)
@@ -182,6 +190,8 @@ def validate_extraction(work):
             problems.append(issue("pdf_crosscheck", f"Independent PDF word coverage {lexical:.5f} < 0.95; inspect source/PDF mismatch or extraction loss"))
     else:
         problems.append(issue("pdf_not_available", "No independent published PDF cross-check", "warning"))
+    if not write_report:
+        return {"status": "FAIL" if any(p["severity"] == "error" for p in problems) else "PASS", "issues": problems, **metrics}
     return report(work, "extraction", problems, **metrics)
 
 

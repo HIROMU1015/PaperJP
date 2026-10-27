@@ -19,18 +19,37 @@
 - `glossary.json`: `status`, `terms: [{en,ja,block_ids}]`。最初は候補、Codexが全体を読み補完。
   辞書の変更はレビュー失効の対象。
 - `packets/*.json`: 英語/保護済みtext/プレースホルダー対応表/原文ハッシュと前後文脈。
+  新規パケットはpaper_idとpacket_sha256も持つ。packet_sha256は自身を除くJSONを
+  ensure_ascii=false/sort_keys=trueで直列化したSHA-256。
   `translate=false`は原文の完全コピー、`true`は`protected_text`を翻訳する。
   英語の明示的な日付（13 March 2000等）は取り込み時に2000年3月13日へ決定的に表記変換し、
   数値検証では年月日の組を照合する。数式・引用等の保護対象内部の日付は変換しない。
-- 翻訳応答: `{ "chunk": "001-sec00.md", "blocks": [{"id":"...","text":"..."}] }`。
+- 翻訳応答: `{ "paper_id":"パケットからコピー", "packet_sha256":"パケットからコピー", "chunk": "001-sec00.md", "blocks": [{"id":"...","text":"..."}] }`。
   全IDを順序通りに含める。非翻訳ブロックも含む。Pythonが復元しMarkdownを保存する。
+  glossary_sha256が現在のglossary.jsonと不一致なら、何も保存せず拒否する。
+  prepareで更新した後も、旧パケットの応答はpacket_sha256不一致で拒否する。
+  既存の旧形式パケットには従来の応答形式を許容するが、用語集照合は必須。
+  既存訳・承認の読み取りに新形式への書き換えは必要ない。
+  インラインMarkdownリンク・画像は区切りと移動先を保護し、表示文字列・altの自然言語を翻訳する。
+  表示文字列内の数式・数値、表示URL自体も原文を保持する。
 - `reviews/packet-HASH.json`: 原文、訳、用語集、文脈と各ハッシュ。パケットは内容アドレスで保存。
+  各blockにbase_review_sha256（依頼作成時の承認レコード全体のハッシュ、未承認ならnull）と
+  previous_review（過去のdecision/rationale/findings）を追加。最大ブロック数とJSON文字数で分割し、
+  各依頼に必要な隣接文脈を含める。単一ブロック＋文脈が上限超過なら停止し、黙って切り詰めない。
 - レビュー応答: `reviewer: "Claude Code"`, `packet_id`, `blocks`。各項目は
   `id,source_sha256,target_sha256,glossary_sha256,decision,rationale,findings`。
   decisionはPASS/NEEDS_REVISION/INCONCLUSIVE。findingsはtype/severity/evidence/suggestion。
 - `reviews/approvals.json`: ID別の判定とハッシュ、参照文脈のハッシュ、取得元packet ID。
+  新規取り込みはpaper_idとresponse_sha256も保存する。base_review_sha256が現在のレコードと
+  一致しなければ、応答全体を原子的に拒否する。同じ現在の結果の再取り込みは無変更。
+  後発の未解決指摘は、古いPASSや指摘到着前の依頼のPASSでは解消できない。
+  旧承認はそのまま有効性判定できるが、既存レコードを上書きする際は新たな依頼が必要。
+  paper_idのない旧承認も、保存された依頼のpaper_idを確認して論文間の混入を拒否する。
   ハッシュ照合は内容の対応を保証するが、手動JSONの書き手を暗号学的に認証しない。
   実レビューの根拠はClaudeの保存応答と実行ログ。テストの模擬応答と区別する。
+- `reviews/claude-request-<packet_id>.json`: `schema_version:1`, `paper_id`, `packet_id`,
+  `requested_model`, `requested_effort`。既定はclaude-opus-5-5 / xhighで、review-runの
+  --model / --effortで上書き可能。起動時の指定値の記録であり、サーバーの実モデルを証明しない。
 - `reports/*.json`, `*.md`: PASS/FAIL、数値指標、error/warningを両形式で保存。
   警告だけで完全性を証明したとは扱わない。PDF/HTML診断モードは重大エラーで正式版を遮断。
 - `paper_ja.draft.md`: 調査用。未承認である旨のコメント付き。`paper_ja.md`は全ゲート通過時のみ。

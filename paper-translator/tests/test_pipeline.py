@@ -31,7 +31,7 @@ def fake_translate(work):
                 text = src["text"]
             blocks.append({"id": src["id"], "text": text})
         response = work / (packet_path.stem + "-response.json")
-        save_json(response, {"chunk": packet["chunk"], "blocks": blocks})
+        save_json(response, {"paper_id": packet["paper_id"], "packet_sha256": packet["packet_sha256"], "chunk": packet["chunk"], "blocks": blocks})
         import_translation(work, response)
 
 

@@ -42,15 +42,21 @@ $paper-explain sec00-p005のuncopyingの定義を説明して
 
 [読解支援の操作手順とデータ形式](paper-translator/docs/ANNOTATIONS.md)。
 
+`papers --root workspace`で複数論文の状態を一覧できます。GPTの訳語レビュー用に、
+term-exportの出力をプレビューしてから`gpt-review/<paper_id>/requests/`へ明示的にコピーし、
+responsesの結果を取り込めます。[共有手順](gpt-review/README.md)を参照してください。
+
 ## 検証と対応範囲
 
 TeXベースのPhase 1について、実arXiv論文で取得から翻訳・独立レビュー・正式統合まで確認しています。
-追加機能を含むローカルテストは68件です。
+追加機能を含むローカルテストは103件です。GitHub ActionsのPythonテスト定義も含みます。
+Claude Codeレビューの既定値はOpus 5.5・推論レベルxhighです。
 HTML/PDFは診断用抽出までで、式・図表を保持した本格的な変換と高度な並列化は未実装です。
 
 - [Phase 1の検証記録](paper-translator/docs/VALIDATION.md)
 - [読解支援の検証記録](paper-translator/docs/ANNOTATIONS_VALIDATION.md)
 - [保存データの契約](paper-translator/docs/FORMATS.md)
+- [外部レビュー指摘の再現・修正と検証範囲](paper-translator/docs/EXTERNAL_REVIEW.md)
 
 仮想環境、取得した論文原本・翻訳などの workspace/、一時データ、デバッグログはGit管理の対象外です。
 テスト用のオリジナル論文データと再現用スクリプトは含まれています。

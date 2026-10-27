@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 import re
 from pathlib import Path
 
@@ -61,6 +62,7 @@ def prepare(work):
             packet_blocks.append({**block, "source_sha256": sha(block["text"]), "protected_text": protected, "placeholders": mapping})
         start = next(i for i, b in enumerate(blocks) if b["id"] == chunk["block_ids"][0])
         end = start + len(chunk["block_ids"])
-        packet = {"schema_version": 1, "chunk": chunk["file"], "glossary_sha256": file_sha(glossary_path), "instructions": "Translate only blocks with translate=true. Preserve tokens exactly. Context is read-only. Non-translatable blocks must be copied exactly.", "blocks": packet_blocks, "context_before": blocks[max(0, start - 1):start], "context_after": blocks[end:end + 1]}
+        packet = {"schema_version": 1, "paper_id": read_json(work / "manifest.json")["paper_id"], "chunk": chunk["file"], "glossary_sha256": file_sha(glossary_path), "instructions": "Translate only blocks with translate=true. Preserve tokens exactly. Context is read-only. Non-translatable blocks must be copied exactly.", "blocks": packet_blocks, "context_before": blocks[max(0, start - 1):start], "context_after": blocks[end:end + 1]}
+        packet["packet_sha256"] = sha(json.dumps(packet, sort_keys=True, ensure_ascii=False))
         save_json(work / "packets" / (Path(chunk["file"]).stem + ".json"), packet)
     return {"packets": len(chunks["chunks"]), "glossary": str(glossary_path)}

@@ -1,5 +1,7 @@
 from pathlib import Path
 import shutil
+import socket
+import subprocess
 
 import pytest
 from PIL import Image
@@ -7,6 +9,15 @@ from PIL import Image
 from paper_translator.common import file_sha, save_json
 from paper_translator.extract import extract
 from paper_translator.split import split
+
+
+@pytest.fixture(autouse=True)
+def no_external_requests(monkeypatch):
+    """Normal tests must mock AI/process results and source downloads explicitly."""
+    def blocked(*args, **kwargs):
+        raise AssertionError("Real network/subprocess calls are forbidden in the offline test suite")
+    monkeypatch.setattr(socket.socket, "connect", blocked)
+    monkeypatch.setattr(subprocess, "Popen", blocked)
 
 
 @pytest.fixture

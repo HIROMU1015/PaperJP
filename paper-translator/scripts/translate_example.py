@@ -4,12 +4,12 @@ Use the paper-translate skill for new papers. This script only reproduces the
 actual example's saved packet responses, with protected math copied by token.
 """
 from pathlib import Path
-import re
 import sys
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from paper_translator.common import read_json, save_json
 from paper_translator.translate import import_translation
+from scripts.recorded_response import recorded_text
 
 TEXT = {
 "sec00-p001": "# 量子削除不可能原理への批判",
@@ -39,13 +39,12 @@ def main():
         for block in packet["blocks"]:
             if block["translate"]:
                 template = TEXT[block["id"]]
-                tokens = list(block["placeholders"])
-                text = re.sub(r"@(\d+)@", lambda m: tokens[int(m[1])], template)
+                text = recorded_text(block, template)
             else:
                 text = block["text"]
             output.append({"id": block["id"], "text": text})
         path = work / "codex-responses" / packet_path.name
-        save_json(path, {"chunk": packet["chunk"], "blocks": output})
+        save_json(path, {**{key: packet[key] for key in ("paper_id", "packet_sha256") if key in packet}, "chunk": packet["chunk"], "blocks": output})
         result = import_translation(work, path)
         print(packet["chunk"], result["status"])
 

@@ -6,6 +6,7 @@ import sys
 from pathlib import Path
 
 from .common import PipelineError, now, save
+from .review import DEFAULT_MODEL, DEFAULT_EFFORT, EFFORT_LEVELS
 
 
 def main(argv=None):
@@ -18,8 +19,17 @@ def main(argv=None):
     acquire.add_argument("url")
     acquire.add_argument("--root", default="workspace")
     acquire.add_argument("--main")
+    papers = sub.add_parser("papers", help="List paper IDs and current status without modifying workspaces")
+    papers.add_argument("--root", type=Path, default=Path("workspace"))
     schemas = sub.add_parser("schema-export", help="Export Draft 2020-12 annotation schemas")
     schemas.add_argument("directory", type=Path)
+    for name in ["term-share", "term-share-import"]:
+        p = sub.add_parser(name, help="Preview/export a GPT request" if name == "term-share" else "Import a GPT response from the shared paper directory")
+        p.add_argument("work", type=Path)
+        p.add_argument("input", type=Path)
+        p.add_argument("--root", type=Path, default=Path("../gpt-review"))
+        if name == "term-share":
+            p.add_argument("--write", action="store_true", help="Explicitly copy the previewed request into Git-managed gpt-review")
     for name in ["annotations-init", "term-add", "term-export", "term-import", "term-apply", "notes-import", "reading", "explain", "context-search", "question-prepare", "annotations-check"]:
         p = sub.add_parser(name)
         p.add_argument("work", type=Path)
@@ -41,11 +51,15 @@ def main(argv=None):
             p.add_argument("--main")
         if name == "split":
             p.add_argument("--target-tokens", type=int, default=2000)
-        if name == "review-prepare":
+        if name in {"review-prepare", "review-run"}:
             p.add_argument("--all", action="store_true")
+            p.add_argument("--max-blocks", type=int, default=40)
+            p.add_argument("--max-chars", type=int, default=60000)
         if name == "review-run":
             p.add_argument("--packet", type=Path)
             p.add_argument("--claude-exe")
+            p.add_argument("--model", default=DEFAULT_MODEL, help=f"Claude model ID or alias (default: {DEFAULT_MODEL})")
+            p.add_argument("--effort", choices=EFFORT_LEVELS, default=DEFAULT_EFFORT, help=f"Claude reasoning effort (default: {DEFAULT_EFFORT})")
         if name == "merge":
             p.add_argument("--draft", action="store_true")
         if name in {"import-translation", "import-review"}:
@@ -68,11 +82,14 @@ def dispatch(args):
     from .extract import extract
     from .fetch import fetch
     from .merge import merge, status
-    from .review import import_review, prepare_review, run_review
+    from .review import import_review, prepare_reviews, run_review
     from .split import prepare, split
     from .translate import import_translation
     from .validate import validate_extraction, validate_translation
     command = args.command
+    if command == "papers":
+        from .library import list_papers
+        return list_papers(args.root)
     if command == "schema-export":
         from .annotation_schema import SCHEMAS, schema
         from .common import save_json
@@ -88,6 +105,11 @@ def dispatch(args):
             return {"work": str(work), **result}
         return {"work": str(work)}
     work = args.work
+    if command in {"term-share", "term-share-import"}:
+        from .sharing import import_shared_terms, share_terms
+        if command == "term-share":
+            return share_terms(work, args.input, args.root, args.write)
+        return import_shared_terms(work, args.input, args.root)
     if command in {"annotations-init", "term-add", "term-export", "term-import", "term-apply", "notes-import", "reading", "explain", "context-search", "question-prepare", "annotations-check"}:
         from .annotation_common import initialize
         from .common import read_json
@@ -132,9 +154,10 @@ def dispatch(args):
     if command == "validate-translation":
         return validate_translation(work)
     if command == "review-prepare":
-        return {"packet": str(prepare_review(work, args.all))}
+        paths = prepare_reviews(work, args.all, args.max_blocks, args.max_chars)
+        return {"packets": list(map(str, paths)), **({"packet": str(paths[0])} if len(paths) == 1 else {})}
     if command == "review-run":
-        return run_review(work, args.packet, args.claude_exe)
+        return run_review(work, args.packet, args.claude_exe, args.all, args.max_blocks, args.max_chars, model=args.model, effort=args.effort)
     if command == "import-review":
         return import_review(work, args.response)
     if command == "merge":

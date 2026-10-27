@@ -1,0 +1,68 @@
+{
+  "preview-fixture": {
+    "files": {
+      "paper_ja.md": "6b72240c7127041c084b69f126ebe7e2298fcc86adc471d8646b9bcfc1912c8e",
+      "finalization.json": "1b5c47e6850f7775f4a861cfacb76025438e5b329ae467cb028885424beeee8e",
+      "reviews/approvals.json": "ff10ef0ec893c75dcb82968260bfca5a16454628c3c4c6c9ca24587c85376aba",
+      "blocks.jsonl": "ac2f4409f0b0b7cee25c2d1564727e17d95dcb7f9f61a8606c226a1dfc703e77",
+      "glossary.json": "0b3b2b8d7b456d033a14c49ea74d83cd2d61ab90cffb2b1e997d12cd0ea4ed2d",
+      "ja_draft/001-sec00.md": "1696de373bb9382193ed1a1654e6d45b6d422148e9348b3ef4442a907a739646"
+    },
+    "review_states": {
+      "sec00-title001": "PASS",
+      "sec00-meta001": "PASS",
+      "sec00-h001": "PASS",
+      "sec00-p001": "PASS",
+      "sec01-h001": "PASS",
+      "sec01-p001": "PASS",
+      "sec01-p002": "PASS",
+      "sec01-h002": "PASS",
+      "sec01-p003": "PASS",
+      "sec01-eq001": "PASS",
+      "sec01-fig001": "PASS",
+      "sec01-cap001": "PASS",
+      "sec01-anchor001": "PASS",
+      "sec01-cap002": "PASS",
+      "sec01-tab001": "PASS",
+      "sec02-h001": "PASS",
+      "sec02-p001": "PASS",
+      "sec02-fn001": "PASS",
+      "sec02-h002": "PASS",
+      "sec02-bib001": "PASS"
+    },
+    "official": "VALID"
+  },
+  "quant-ph_0005006v1": {
+    "files": {
+      "paper_ja.md": "5ea720cebaf373fea0622de89d391e2c5fb86b8c22b7ec6b8906d79b92ffe83f",
+      "finalization.json": "5e8246c8f4ae392af064355a0f77065b0132db062cfd370a54dd61a97e406f66",
+      "reviews/approvals.json": "e0f206737cd708e296011f009c5a5b4a7706db5f02e70de1fa077a9a2121edef",
+      "blocks.jsonl": "8d9d906fad2e4225c30c41ee841ddd393de75f569c0750d5533905f04390d71d",
+      "glossary.json": "9d21c91b20d1d8324a3fb3c936e0c412cb3e0335a00f8ba256899680f633d122",
+      "ja_draft/001-sec00.md": "73a4330e20c66cfe9c84f4546c6bdb6beddb01f483b9e1621b92e312f86d6126",
+      "ja_draft/002-sec00.md": "cb7153236fa09688f73caaa8f87d1a5fa9a191da432dc7d68d4ec696f8565f0a"
+    },
+    "review_states": {
+      "sec00-p001": "PASS",
+      "sec00-p002": "PASS",
+      "sec00-p003": "PASS",
+      "sec00-p004": "PASS",
+      "sec00-p005": "PASS",
+      "sec00-p006": "PASS",
+      "sec00-p007": "PASS",
+      "sec00-p008": "PASS",
+      "sec00-p009": "PASS",
+      "sec00-p010": "PASS",
+      "sec00-p011": "PASS",
+      "sec00-p012": "PASS",
+      "sec00-p013": "PASS",
+      "sec00-p014": "PASS",
+      "sec00-p015": "PASS",
+      "sec00-p016": "PASS",
+      "sec00-p017": "PASS",
+      "sec00-p018": "PASS",
+      "sec00-p019": "PASS"
+    },
+    "official": "VALID"
+  }
+}

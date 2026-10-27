@@ -54,13 +54,13 @@ def merge(work, draft=False):
     return work / name
 
 
-def status(work):
+def status(work, write_reports=True):
     work = Path(work)
     result = {"source": "available" if (work / "manifest.json").exists() else "not_run", "extraction": "not_run", "translation": "not_run", "review": {}, "official": "not_generated"}
     if (work / "chunks.json").exists():
-        result["extraction"] = validate_extraction(work)["status"]
+        result["extraction"] = validate_extraction(work, write_report=write_reports)["status"]
     if (work / "glossary.json").exists():
-        result["translation"] = validate_translation(work)["status"]
+        result["translation"] = validate_translation(work, write_report=write_reports)["status"]
         result["review"] = dict(Counter(review_state(work).values()))
     marker = work / "finalization.json"
     from .terminology import terminology_issues, terminology_status

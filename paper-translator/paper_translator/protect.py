@@ -28,13 +28,17 @@ def localize_dates(text):
     return PROTECTED.sub(replace, text)
 
 
-# Order matters: math and whole links are protected before numbers/macros within them.
+# Order matters: math precedes link syntax and numbers. Link labels remain prose;
+# opening delimiters and closing delimiters/destinations are immutable separately.
 PROTECTED = re.compile(
     r"\$\$[\s\S]*?\$\$|(?<![\\$])\$(?!\$)(?:\\.|[^$])*?(?<!\\)\$"
     r"|\\\([\s\S]*?\\\)|\\\[[\s\S]*?\\\]"
     r'|<a\s+id="[^"]+"\s*></a>'
     r"|</?[A-Za-z][^>\n]*>"
-    r"|!?\[[^\]\n]*\]\([^\)\n]+\)|\[\^[^\]]+\](?::)?"
+    r"|\[\^[^\]]+\](?::)?"
+    r"|!?\[(?=(?:\\.|[^\]\\\n]|\[[^\]\n]*\])*\]\()"
+    r"|\]\((?:\\.|[^()\\\n]|\([^()\n]*\))*\)"
+    r"|https?://(?:[^\s<>\[\]()]|\([^()\s]*\))+"
     r"|\\[A-Za-z]+(?:\*?)(?:\{[^{}]*\})*"
     r"|[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}"
     rf"|(?:{DATE_PATTERN})"

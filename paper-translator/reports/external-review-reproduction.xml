@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="4" skipped="0" tests="4" time="0.814" timestamp="2026-10-27T12:39:38.696944+09:00" hostname="abe"><testcase classname="tests.test_external_review" name="test_old_pass_cannot_clear_new_unresolved_review[NEEDS_REVISION]" time="0.307"><failure message="Failed: DID NOT RAISE PipelineError">tests\test_external_review.py:29: in test_old_pass_cannot_clear_new_unresolved_review
+    with pytest.raises(PipelineError, match="superseded|replay|revision"):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE PipelineError</failure></testcase><testcase classname="tests.test_external_review" name="test_old_pass_cannot_clear_new_unresolved_review[INCONCLUSIVE]" time="0.182"><failure message="Failed: DID NOT RAISE PipelineError">tests\test_external_review.py:29: in test_old_pass_cannot_clear_new_unresolved_review
+    with pytest.raises(PipelineError, match="superseded|replay|revision"):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE PipelineError</failure></testcase><testcase classname="tests.test_external_review" name="test_import_translation_rejects_changed_glossary_before_writes" time="0.067"><failure message="Failed: DID NOT RAISE PipelineError">tests\test_external_review.py:44: in test_import_translation_rejects_changed_glossary_before_writes
+    with pytest.raises(PipelineError, match="glossary"):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE PipelineError</failure></testcase><testcase classname="tests.test_external_review" name="test_markdown_link_label_is_translatable_but_destination_is_immutable" time="0.000"><failure message="AssertionError: assert 'Experimental results' in 'See ⟦PT_38ab17ba_0000⟧.'">tests\test_external_review.py:52: in test_markdown_link_label_is_translatable_but_destination_is_immutable
+    assert "Experimental results" in protected
+E   AssertionError: assert 'Experimental results' in 'See ⟦PT_38ab17ba_0000⟧.'</failure></testcase></testsuite></testsuites>

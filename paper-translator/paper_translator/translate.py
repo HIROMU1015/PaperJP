@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 import re
 from pathlib import Path
 
@@ -15,6 +16,14 @@ def import_translation(work, response_file):
     if not spec:
         raise PipelineError("Unknown translation chunk")
     packet = read_json(work / "packets" / (Path(chunk).stem + ".json"))
+    if packet.get("paper_id") not in {None, read_json(work / "manifest.json")["paper_id"]}:
+        raise PipelineError("Translation packet belongs to another paper")
+    if packet.get("glossary_sha256") != file_sha(work / "glossary.json"):
+        raise PipelineError("Translation packet has a stale glossary; run prepare again")
+    if "packet_sha256" in packet and packet["packet_sha256"] != sha(json.dumps({k: v for k, v in packet.items() if k != "packet_sha256"}, sort_keys=True, ensure_ascii=False)):
+        raise PipelineError("Translation packet content hash mismatch; run prepare again")
+    if "packet_sha256" in packet and (response.get("paper_id") != packet["paper_id"] or response.get("packet_sha256") != packet["packet_sha256"]):
+        raise PipelineError("Translation response belongs to another paper or an old packet/glossary; translate the current packet")
     incoming = response.get("blocks", [])
     if [b.get("id") for b in incoming] != spec["block_ids"]:
         raise PipelineError("Translation IDs missing, duplicated or reordered")

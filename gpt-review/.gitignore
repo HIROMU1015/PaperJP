@@ -1,0 +1,12 @@
+# Only explicit terminology requests and manually saved GPT responses are shared.
+/*
+!/.gitignore
+!/README.md
+!/*/
+/*/*
+!/*/requests/
+!/*/responses/
+/*/requests/*
+!/*/requests/*.json
+/*/responses/*
+!/*/responses/*.json

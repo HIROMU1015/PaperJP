@@ -86,6 +86,49 @@ resultsの一部だけを取り込むこともでき、未回答候補は未確�
 保存したstatusは操作時点の状態で、現在の対訳との整合性はannotations-check/statusで再計算する。
 手動取り込みは内容の対応を検証する仕組みで、GPTの署名認証ではない。
 
+## GitでGPT訳語レビューを受け渡す
+
+workspace全体はGit管理の対象外のままとし、共有する依頼だけを明示的にコピーする。
+リポジトリ直下の`gpt-review/<paper_id>/requests/`と`responses/`を使用する。
+paper_idに`/`があれば`_`へ変換するが、JSON内のpaper_idは元のまま保持する。
+
+```powershell
+# paper-translatorフォルダーから実行。packetはterm-exportが返したパスを指定する。
+.\.venv\Scripts\python.exe -m paper_translator term-export $paperWork
+$termPacket = 'workspace\quant-ph_0005006v1\terminology\terms-HASH.json'
+.\.venv\Scripts\python.exe -m paper_translator term-share $paperWork $termPacket
+# 表示されたpacket全体を確認してから、同じ内容を共有フォルダーへコピーする。
+.\.venv\Scripts\python.exe -m paper_translator term-share $paperWork $termPacket --write
+```
+
+`--write`なしでは共有フォルダーを作らず、コピー予定のパスとJSON全体を表示する。
+候補には各出現箇所の英語原文・日本語訳の**段落全文**が含まれるので、公開可能か確認する。
+`--write`はスキーマと内容ハッシュを照合した依頼JSON1件だけをコピーする。
+原本、数式画像、翻訳ファイル、内部ログを追加でコピーしない。コミット・プッシュ・GPTへの
+送信は実行しない。`--root`で共有ルートを変更でき、既定は`../gpt-review`。
+
+人間がGPTへ渡し、前節の形式の結果JSONを該当論文のresponsesへ保存する。
+
+```powershell
+.\.venv\Scripts\python.exe -m paper_translator term-share-import $paperWork ..\gpt-review\quant-ph_0005006v1\responses\gpt-result.json
+```
+
+同じ論文のresponses内のJSONだけを受け付け、requestsの依頼がworkspaceのterm-export出力と
+一致することを確認してから、既存のterm-importへ渡す。誤った論文、改変された共有依頼、
+現在の原文・訳文と合わない結果は拒否する。依頼と結果は同一block_idでもpaper_idで分離する。
+共有用の新しいJSON形式は作らず、従来のterminology-packet / terminology-resultスキーマを使う。
+
+## 複数論文の状態を一覧する
+
+```powershell
+.\.venv\Scripts\python.exe -m paper_translator papers --root workspace
+```
+
+各作業フォルダーのmanifestを基準に、paper_id、作業パス、抽出・翻訳・レビュー件数、
+正式版の状態、訳語の未解決状態をJSONで表示する。作業フォルダーやレポートは変更しない。
+別版は別paper_idとして管理する。同じIDを複数フォルダーで管理している場合はERRORで示す。
+破損した作業フォルダーがあっても、他の論文の一覧取得を続ける。
+
 ## Codexが各出現箇所を修正する
 
 Codexはexplainで各出現箇所を読み、意味を確認して段落全文と修正理由を用意する。
