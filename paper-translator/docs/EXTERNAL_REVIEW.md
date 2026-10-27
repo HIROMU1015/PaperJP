@@ -2,7 +2,7 @@
 
 基本のmanifest / block_id / 翻訳・Claudeレビュー・統合の流れを維持し、7項目を修正・追加した。
 後続の指定により、レビュー実行の既定モデル・推論レベルの明示指定も追加した。
-ローカルのPython 3.12 / Windowsで**103テスト成功（既存68件＋外部レビュー対応32件＋モデル指定3件）**。
+ローカルのPython 3.12 / Windowsで**105テスト成功（既存68件＋外部レビュー対応32件＋モデル指定3件＋改行形式2件）**。
 AI応答を使う回帰テストは模擬JSONによるプロトコル検証であり、実際の意味的承認ではない。
 
 ## 1〜3の修正前の再現
@@ -66,7 +66,7 @@ AI応答を使う回帰テストは模擬JSONによるプロトコル検証で�
 
 ## 実行した検証
 
-- 全103件の[pytest結果](../reports/external-review-regression.xml)。既存68件のアサーションは維持し、
+- 全105件の[pytest結果](../reports/external-review-regression.xml)。既存68件のアサーションは維持し、
   模擬翻訳の応答ヘルパーだけ新規パケットの識別情報へ対応した。
 - 古いPASS、遅れて到着するPASS、混在する古いブロックを含む応答全体の原子的拒否、
   新しい依頼による解消、同じ現在の結果の再取り込みの無変更。
@@ -94,9 +94,14 @@ AI応答を使う回帰テストは模擬JSONによるプロトコル検証で�
 対象はpaper_ja.md、finalization.json、reviews/approvals.json、blocks.jsonl、glossary.json、
 全ja_draftチャンク。承認日時を含むファイル自体が一致し、不必要な再承認・翻訳の変更はない。
 
-## 未実施の検証
+## GitHub Actionsと未実施の検証
 
-GitHub Actions上での実走、Ubuntu / Python 3.11での実行、長大な実論文を用いた分割Claude Codeの
-実通信、GPTの実確認は今回未実施。新しいMarkdown表示のUI検証も行っていない。
+初回の[GitHub Actions実走](https://github.com/HIROMU1015/PaperJP/actions/runs/40447725913)では
+UbuntuのPython 3.11 / 3.12が成功し、Windows両構成はCRLFの中間TeX照合で失敗した。
+read_textの自動改行変換を避けて保存内容を文字通り比較する修正と、LF / CRLFの回帰テストを追加した。
+原本ハッシュや原文位置は維持し、改行を理由に検証基準を緩めていない。
+
+長大な実論文を用いた分割Claude Codeの実通信、GPTの実確認は今回未実施。
+新しいMarkdown表示のUI検証も行っていない。
 分割・中断再開・共有往復はローカルで実行したが、AI部分は模擬応答による検証である。
 過去のPhase 1におけるClaude Codeの実承認を、今回の模擬応答で置き換えていない。

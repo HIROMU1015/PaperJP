@@ -49,7 +49,7 @@ responsesの結果を取り込めます。[共有手順](gpt-review/README.md)�
 ## 検証と対応範囲
 
 TeXベースのPhase 1について、実arXiv論文で取得から翻訳・独立レビュー・正式統合まで確認しています。
-追加機能を含むローカルテストは103件です。GitHub ActionsのPythonテスト定義も含みます。
+追加機能を含むローカルテストは105件です。GitHub ActionsのPythonテスト定義も含みます。
 Claude Codeレビューの既定値はOpus 5.5・推論レベルxhighです。
 HTML/PDFは診断用抽出までで、式・図表を保持した本格的な変換と高度な並列化は未実装です。
 

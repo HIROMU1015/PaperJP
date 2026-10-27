@@ -139,7 +139,9 @@ def validate_extraction(work, write_report=True):
         from .tex import expanded_source
         main = diagnostics["included_files"][0]
         source, _, _ = expanded_source(work / "source" / "tex", main)
-        if source != source_path.read_text(encoding="utf-8"):
+        # Compare the saved expansion literally. read_text's universal-newline
+        # conversion falsely reports CRLF sources as changed on a clean checkout.
+        if source != source_path.read_bytes().decode("utf-8"):
             problems.append(issue("stale_expansion", "Expanded TeX differs from immutable inputs"))
         inventory = independent_inventory(source)
         mapping = {"headings": "heading", "equations": "equation", "figures": "figure", "tables": "table", "references": "reference", "footnotes": "footnote", "captions": "caption"}

@@ -51,6 +51,27 @@ def test_import_translation_rejects_changed_glossary_before_writes(work):
     assert {p.name: file_sha(p) for p in (work / "ja_draft").glob("*.md")} == before
 
 
+@pytest.mark.parametrize("newline", ["\n", "\r\n"], ids=["LF", "CRLF"])
+def test_original_tex_line_endings_are_not_reported_as_stale(work, newline):
+    from paper_translator.extract import extract
+    from paper_translator.split import split
+    from paper_translator.validate import validate_extraction
+    for path in (work / "source/tex").glob("*.tex"):
+        text = path.read_text(encoding="utf-8")
+        path.write_bytes(text.replace("\n", newline).encode("utf-8"))
+    manifest = read_json(work / "manifest.json")
+    for entry in manifest["files"]:
+        entry["sha256"] = file_sha(work / entry["path"])
+    save_json(work / "manifest.json", manifest)
+    extract(work)
+    split(work)
+    from paper_translator.tex import expanded_source
+    expanded, _, _ = expanded_source(work / "source/tex")
+    assert (work / "extracted-source.tex").read_bytes().decode("utf-8") == expanded
+    result = validate_extraction(work)
+    assert result["status"] == "PASS", result
+
+
 def test_markdown_link_label_is_translatable_but_destination_is_immutable():
     source = "See [Experimental results](https://example.org/paper#results)."
     protected, mapping = protect(source, "sec01-p001")
